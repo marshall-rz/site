@@ -1,5 +1,11 @@
 from flask import Flask, render_template
-
+# LINES ADDED FOR GEOCODER
+import pandas
+from werkzeug.utils import secure_filename
+from geopy.geocoders import ArcGIS
+import os
+nom=ArcGIS()
+# END OF ADDED LINES TO GEOCODER
 app=Flask(__name__)
 
 @app.route('/plot/')
@@ -58,6 +64,35 @@ def home():
 @app.route('/about/')
 def about():
     return render_template('about.html')
+
+# LINES ADDED FOR GEOCODER
+
+@app.route("/geocoder/")
+def index():
+    return render_template("geocoder.html")
+
+@app.route("/success", methods=['POST'])
+def success():
+    global file
+    if request.method=='POST':
+        file=request.files["file"]
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], secure_filename("uploaded_file.xlsx")))
+        df = pandas.read_excel("./geocoder/uploaded_file.xlsx")
+        df["Complete Add"] = df["Address"]+", "+ df["City"]+", " + df["State"]+", "+ str(df["ZIP"])+", " + df["Country"]
+        df["Coordinates"]=df["Complete Add"].apply(nom.geocode)
+        df["Latitude"]=df["Coordinates"].apply(lambda x: x.latitude)
+        df["Longitude"]=df["Coordinates"].apply(lambda x: x.longitude)
+        del df['Coordinates']
+        del df['Complete Add']
+        df.to_excel('./geocoder/addresses_w_coordinates.xlsx')
+
+        return render_template("index.html", btn = "download.html")
+
+@app.route("/download.html")
+
+def download():
+    return send_file("addresses_w_coordinates.xlsx", attachment_filename="yourfile.xlsx", as_attachment=True)
+# END OF ADDED LINES TO GEOCODER
 
 if __name__=="__main__":
     app.run(debug=True)
