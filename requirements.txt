@@ -35,6 +35,11 @@ jsonschema==3.2.0
 jupyter-client==6.1.7
 jupyter-core==4.6.3
 jupyterlab-pygments==0.1.2
+Kivy @ https://github.com/kivy/kivy/archive/master.zip
+kivy-deps.angle==0.3.0
+kivy-deps.glew==0.3.0
+kivy-deps.sdl2==0.3.1
+Kivy-Garden==0.1.4
 lazy-object-proxy==1.4.3
 MarkupSafe==1.1.1
 mccabe==0.6.1
