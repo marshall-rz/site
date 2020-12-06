@@ -35,11 +35,6 @@ jsonschema==3.2.0
 jupyter-client==6.1.7
 jupyter-core==4.6.3
 jupyterlab-pygments==0.1.2
-Kivy @ https://github.com/kivy/kivy/archive/master.zip
-kivy-deps.angle==0.3.0
-kivy-deps.glew==0.3.0
-kivy-deps.sdl2==0.3.1
-Kivy-Garden==0.1.4
 lazy-object-proxy==1.4.3
 MarkupSafe==1.1.1
 mccabe==0.6.1
@@ -71,7 +66,6 @@ pyrsistent==0.17.3
 pytesseract==0.3.6
 python-dateutil==2.8.1
 pytz==2020.1
-pywin32==228
 pywinpty==0.5.7
 PyYAML==5.3.1
 pyzmq==19.0.2
