@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 # LINES ADDED FOR GEOCODER
 import pandas
+import pandas_datareader as pdrpip 
 from werkzeug.utils import secure_filename
 from geopy.geocoders import ArcGIS
 import os
@@ -39,7 +40,7 @@ def plot():
 
     p.title.text="Candlestick Chart"
 
-    p.grid.grid_line_alpha=0.3 #alpha means the levelof transparency
+    p.grid.grid_line_alpha=0.3 #alpha means the level of transparency
 
     hours_12 = 12*60*60*1000
 
@@ -68,7 +69,7 @@ def about():
 # LINES ADDED FOR GEOCODER
 
 @app.route("/geocoder/")
-def index():
+def geocoder():
     return render_template("geocoder.html")
 
 @app.route("/success", methods=['POST'])
