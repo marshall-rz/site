@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, send_file # last 2 added for 
 
 # LINES ADDED FOR GEOCODER
 import pandas
-import pandas_datareader as pdr
 from werkzeug.utils import secure_filename
 from geopy.geocoders import ArcGIS
 import os
