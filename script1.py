@@ -1,4 +1,5 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, send_file # last 2 added for geocoder
+
 # LINES ADDED FOR GEOCODER
 import pandas
 import pandas_datareader as pdr
@@ -8,6 +9,13 @@ import os
 nom=ArcGIS()
 # END OF ADDED LINES TO GEOCODER
 app=Flask(__name__)
+
+# LINES ADDED FOR GEOCODER
+UPLOAD_FOLDER = './geocoder'
+DOWNLOAD_FOLDER = '.'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['DOWNLOAD_FOLDER'] = DOWNLOAD_FOLDER
+# END OF ADDED LINES TO GEOCODER
 
 @app.route('/plot/')
 def plot():
