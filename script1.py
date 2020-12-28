@@ -99,7 +99,7 @@ def success():
 @app.route("/download.html")
 
 def download():
-    return send_file("addresses_w_coordinates.xlsx", attachment_filename="yourfile.xlsx", as_attachment=True)
+    return send_file("./geocoder/addresses_w_coordinates.xlsx", attachment_filename="yourfile.xlsx", as_attachment=True)
 # END OF ADDED LINES TO GEOCODER
 
 if __name__=="__main__":
