@@ -100,6 +100,7 @@ def success():
 
 def download():
     return send_file("./geocoder/addresses_w_coordinates.xlsx", attachment_filename="yourfile.xlsx", as_attachment=True)
+    return render_template("geocoder.html")
 # END OF ADDED LINES TO GEOCODER
 
 if __name__=="__main__":
