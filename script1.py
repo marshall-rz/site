@@ -28,6 +28,7 @@ def plot():
     end = datetime.datetime(2016,3,10)
 
     df = data.DataReader(name="GOOG", data_source="yahoo", start=start, end=end)
+    df = web.DataReader('GOOG', 'yahoo', start=start, end=end)
 
     def inc_dec(c, o):
         if c > o:
