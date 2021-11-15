@@ -27,7 +27,7 @@ def plot():
     start = datetime.datetime(2015,11,1)#the funcion requires a datetime parameter
     end = datetime.datetime(2016,3,10)
 
-    df = data.DataReader(name="GOOG", data_source="yahoo", start=start, end=end)
+    #df = data.DataReader(name="GOOG", data_source="yahoo", start=start, end=end)
     df = web.DataReader('GOOG', 'yahoo', start=start, end=end)
 
     def inc_dec(c, o):
