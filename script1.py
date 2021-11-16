@@ -1,5 +1,10 @@
 from flask import Flask, render_template, request, send_file # last 2 added for geocoder
 
+#Yahoo finance fix
+
+from pandas_datareader import data as pdr
+import yfinance as yf
+
 # LINES ADDED FOR GEOCODER
 import pandas
 from werkzeug.utils import secure_filename
@@ -28,7 +33,8 @@ def plot():
     end = datetime.datetime(2016,3,10)
 
     #df = data.DataReader(name="GOOG", data_source="yahoo", start=start, end=end)
-    df = web.DataReader('GOOG', 'yahoo', start=start, end=end)
+    #Fix found in https://www.ti-enxame.com/pt/python/python-pandas-datareader-nao-funciona-mais-para-o-yahoo-finance-mudou-o-url/832296838/
+    df = yf.download('GOOG', start=start, end=end)
 
     def inc_dec(c, o):
         if c > o:
